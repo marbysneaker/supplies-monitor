@@ -15,11 +15,12 @@ def walmart_monitor (tp):
         print(i)
         r =requests.get(i,headers = randomheaders.LoadHeader()).text
         page_soup = soup(r, 'html.parser')
-        tp = (page_soup.find_all('div', class_="prod-ProductOffer-oosMsg prod-PaddingTop--xxs"))
+        tp = (page_soup.find_all('div', class_="valign-middle display-inline-block prod-product-primary-cta primaryProductCTA-marker"))
         for i in tp:
-            if i.text == 'Out of stock':
-                print('out of stock')
-            else:
-                return i
+            print(i.text)
+            # if i.text == 'Out of stock':
+            #     print('out of stock')
+            # elif i.text == []:
+            #     print(i, 'in-stock alert!')
 
 walmart_monitor(tp)
